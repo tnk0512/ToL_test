@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ToL テスト用　みなさまへ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.7;
+            margin: 40px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .task {
+            margin-bottom: 40px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ToL テスト用　みなさまへ</h1>
+    <p>このユーザーテストは、ToL システムの操作性や理解度を評価するために設計されています。直感的な判断を重視しているため、素早く回答することを意識してください。</p>
+
+    <h2>テストの概要</h2>
+    <ul>
+        <li>タスク数: 5種類</li>
+        <li>各タスクの問題数: 40問</li>
+        <li>回答時間: 1問につき3秒（ただし、1問目の前は3秒のカウントダウンあり）</li>
+        <li>目的: 正解を狙うのではなく、<strong>直感</strong>で回答することを意識する</li>
+    </ul>
+    <p>各タスク終了後、以下のGoogleフォームに感想を入力してください。<br>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQ08reMwvc32y2omuOQsUuiW1UGd51s3AKbUhJ6eB9ebSHQg/viewform?usp=dialog" target="_blank">Googleフォーム</a>
+    </p>
+
+    <div class="task">
+        <h2>タスク1: 扇形の中心角の割合を選ぶ</h2>
+        <p>質問: 「★の扇形の中心角は全体の約何%を占めていると考えますか？」</p>
+        <ul>
+            <li>10%未満</li>
+            <li>10%~30%</li>
+            <li>30%~50%</li>
+            <li>50%以上</li>
+        </ul>
+        <p>
+            <a href="http://127.0.0.1:5000/ToL?task=ex-size1" target="_blank">[例題_1]</a><br>
+            <a href="http://127.0.0.1:5000/ToL?task=size1" target="_blank">[試験開始]（例題を見てから、押してください）</a>
+        </p>
+    </div>
+
+    <div class="task">
+        <h2>タスク2: 指定された層で最も大きい扇形をクリック</h2>
+        <p>質問: 「指定された{depth}層目で最も大きい扇形を持つノードをクリックしてください。」</p>
+        <p>
+            <a href="http://127.0.0.1:5000/ToL?task=ex-size2" target="_blank">[例題_2]</a><br>
+            <a href="http://127.0.0.1:5000/ToL?task=size2" target="_blank">[試験開始]（例題を見てから、押してください）</a>
+        </p>
+    </div>
+
+    <div class="task">
+        <h2>タスク3: 扇形の大きさを比較</h2>
+        <p>質問: 「★は同じ層の扇形の中で何番目に大きいですか？」</p>
+        <ul>
+            <li>1番目</li>
+            <li>それ以外</li>
+        </ul>
+        <p>
+            <a href="http://127.0.0.1:5000/ToL?task=ex-size3" target="_blank">[例題_3]</a><br>
+            <a href="http://127.0.0.1:5000/ToL?task=size3" target="_blank">[試験開始]（例題を見てから、押してください）</a>
+        </p>
+    </div>
+
+    <div class="task">
+        <h2>タスク4: 2つの扇形の大きさを比較</h2>
+        <p>質問: 「★と⚫︎で、どちらが大きいですか？」</p>
+        <p>これまでと比べて、シンプルな問題です。</p>
+        <p>
+            <a href="http://127.0.0.1:5000/ToL?task=ex-size4" target="_blank">[例題_4]</a><br>
+            <a href="http://127.0.0.1:5000/ToL?task=size4" target="_blank">[試験開始]</a>
+        </p>
+    </div>
+
+    <div class="task">
+        <h2>タスク5: 共通祖先を探す</h2>
+        <p>質問: 「サブツリー内で、★と⚫︎の共通祖先は存在しますか？存在する場合は、共通祖先の中で最も2つのノードに近い層のノードを選択してください。」</p>
+        <p>
+            <a href="http://127.0.0.1:5000/ToL?task=ex-hierarchical" target="_blank">[例題_5]</a><br>
+            <a href="http://127.0.0.1:5000/ToL?task=hierarchical" target="_blank">[試験開始]</a>
+        </p>
+    </div>
+
+    <h2>CSVファイルの提出</h2>
+    <p>各タスク終了時にダウンロードされる5つのCSVファイルを以下のURLにアップロードしてください。<br>
+        <a href="https://science-tokyo.box.com/s/d5vs54kv91gfbudfb7lcmv9kkz9wuv71" target="_blank">Box 提出フォーム</a>
+    </p>
+
+    <p><strong>お疲れ様でした！ご協力ありがとうございました。</strong></p>
+
+</body>
+</html>
