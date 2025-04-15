@@ -30,13 +30,37 @@
 <body>
 
     <h1>ToL テスト用　みなさまへ</h1>
-    <p>このユーザーテストは、ToL システムの操作性や理解度を評価するために設計されています。直感的な判断を重視しているため、素早く回答することを意識してください。</p>
+    <h2>名前の設定</h2>
+    <div>
+        <label for="userName">あなたの名前（ニックネーム可）を入力してください：</label>
+        <input type="text" id="userName" placeholder="例: ちくわ">
+        <button onclick="applyName()">確定</button>
+    </div>
+
+    <script>
+        function applyName() {
+            const name = document.getElementById("userName").value.trim();
+            if (!name) {
+                alert("名前を入力してください。");
+                return;
+            }
+
+            const links = document.querySelectorAll("a[data-base]");
+            links.forEach(link => {
+                const base = link.getAttribute("data-base");
+                link.href = `${base}&name=${encodeURIComponent(name)}`;
+            });
+            alert(`名前「${name}」が設定されました。`);
+        }
+    </script>
 
     <h2>テストの概要</h2>
+    <p>このユーザーテストは、ToL システムの操作性や理解度を評価するために設計されています。直感的な判断を重視しているため、素早く回答することを意識してください。</p>
     <ul>
         <li>タスク数: 5種類</li>
         <li>各タスクの問題数: 40問</li>
         <li>回答時間: 1問につき3秒（ただし、1問目の前は3秒のカウントダウンあり）</li>
+        <li>全てのタスクに例題を用意してあります。例題は、1問につき10秒与えられ、答えが表示されています。</li>
         <li>目的: 正解を狙うのではなく、<strong>直感</strong>で回答することを意識する</li>
     </ul>
     <p>各タスク終了後、以下のGoogleフォームに感想を入力してください。<br>
@@ -54,7 +78,8 @@
         </ul>
         <p>
             <a href="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=ex-size1" target="_blank">[例題_1]</a><br>
-            <a href="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=size1" target="_blank">[試験開始]（例題を見てから、押してください）</a>
+            <!--<a href="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=size1" target="_blank">[試験開始]（例題を見てから、押してください）</a>-->
+            <a data-base="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=size1" target="_blank">[試験開始]（例題を見てから、押してください）</a>
         </p>
     </div>
 
@@ -63,7 +88,7 @@
         <p>質問: 「指定された{depth}層目で最も大きい扇形を持つノードをクリックしてください。」</p>
         <p>
             <a href="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=ex-size2" target="_blank">[例題_2]</a><br>
-            <a href="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=size2" target="_blank">[試験開始]（例題を見てから、押してください）</a>
+            <a data-base="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=size2" target="_blank">[試験開始]（例題を見てから、押してください）</a>
         </p>
     </div>
 
@@ -76,7 +101,7 @@
         </ul>
         <p>
             <a href="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=ex-size3" target="_blank">[例題_3]</a><br>
-            <a href="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=size3" target="_blank">[試験開始]（例題を見てから、押してください）</a>
+            <a data-base="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=size3" target="_blank">[試験開始]（例題を見てから、押してください）</a>
         </p>
     </div>
 
@@ -86,7 +111,7 @@
         <p><strong>注意: </strong>★や⚫︎の部分はクリックしても反応しないため、違う箇所をクリックしてください。</p>
         <p>
             <a href="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=ex-size4" target="_blank">[例題_4]</a><br>
-            <a href="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=size4" target="_blank">[試験開始]</a>
+            <a data-base="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=size4" target="_blank">[試験開始（例題を見てから、押してください）]</a>
         </p>
     </div>
 
@@ -95,7 +120,7 @@
         <p>質問: 「サブツリー内で、★と⚫︎の共通祖先は存在しますか？存在する場合は、共通祖先の中で最も2つのノードに近い層のノードを選択してください。」</p>
         <p>
             <a href="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=ex-hierarchical" target="_blank">[例題_5]</a><br>
-            <a href="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=hierarchical" target="_blank">[試験開始]</a>
+            <a data-base="https://0981-2407-c800-2f23-298-9001-4b37-b2e4-aa3a.ngrok-free.app/ToL?task=hierarchical" target="_blank">[試験開始]（例題を見てから、押してください）</a>
         </p>
     </div>
 
