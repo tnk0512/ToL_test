@@ -1,126 +1,173 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>ToL テスト用　みなさまへ</title>
-    <link rel="stylesheet" href="static/css/style.css">
+  <meta charset="UTF-8" />
+  <title>🌲ToL_テストページ</title>
+  <link rel="stylesheet" href="static/css/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h1>ToL テスト用　みなさまへ</h1>
 
-    <section>
-        <h2>① 名前の設定</h2>
-        <label for="userName">あなたの名前（ニックネーム可）を入力してください：</label>
-        <input type="text" id="userName" placeholder="例: ちくわ">
-        <button onclick="applyName()">確定</button>
-    </section>
+  <div class="sidebar">
+    <div id="nav1" class="step current">1. 名前の設定</div>
+    <div id="nav2" class="step">2. テスト概要</div>
+    <div id="nav3" class="step">3. テスト</div>
+    <div id="nav4" class="step">4. 全体の感想</div>
+  </div>
 
-    <section>
-        <h2>② テスト概要</h2>
-        <ul>
+  <div class="content">
+    <div id="panel1" class="panel active">
+      <h2>① 名前の設定</h2>
+      <label for="userName">あなたの名前（ニックネーム可）を入力してください：</label>
+      <input type="text" id="userName" placeholder="例: ちくわ">
+      <button id="confirmName" onclick="applyName()">確定</button>
+    </div>
+
+    <div id="panel2" class="panel">
+      <h2>② テスト概要</h2>
+      <ul>
             <li>タスク数: 5種類</li>
             <li>各タスクの問題数: 40問</li>
-            <li>回答時間: 1問につき3秒（ただし、1問目の前は3秒のカウントダウンあり）</li>
-            <li>全てのタスクに例題を用意してあります。例題は、1問につき10秒与えられ、答えが表示されています。</li>
+            <li>回答時間：クリックして回答すると自動的に次の問題に進みます。<strong>選択は1回限り</strong>なのでご注意ください。</li>
+            <li>すべてのタスクに例題が用意されています。例題では選択しても自動的に遷移せず、<strong>答えが表示されます。</strong></li>
+            <li>選択時に音が鳴るようになっています。音を鳴らさない設定も可能です。</li>
             <li>目的: 正解を狙うのではなく、<strong>直感</strong>で回答することを意識してください。</li>
+            <li><strong>5種類のタスク完了後に、あなたの回答結果を踏まえて15分ほどのインタビューを行います。</strong></li>
+      </ul>
+      <button id="toTest">次へ（タスクへ進む）</button>
+    </div>
+
+    <div id="panel3" class="panel">
+      <h2>③ テスト</h2>
+      <p>タスクタブをクリックして開始してください。</p>
+      <div class="tab-buttons">
+        <button class="tab-button active" onclick="openTab(event, 'task1')">タスク1</button>
+        <button class="tab-button" onclick="openTab(event, 'task2')">タスク2</button>
+        <button class="tab-button" onclick="openTab(event, 'task3')">タスク3</button>
+        <button class="tab-button" onclick="openTab(event, 'task4')">タスク4</button>
+        <button class="tab-button" onclick="openTab(event, 'task5')">タスク5</button>
+    </div>
+
+    <div id="task1" class="tab-content">
+        <h3>タスク1: 扇形の中心角の割合を選ぶ</h3>
+        <p>「★の扇形の中心角は全体の約何%を占めていると考えますか？」</p>
+        <ul>
+            <li>10%未満</li><li>10%~30%</li><li>30%~50%</li><li>50%以上</li>
         </ul>
-    </section>
+        <p><a href="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=ex-size1" target="_blank">[例題]</a>
+        <a data-base="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=size1" target="_blank">[試験開始]</a></p>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSce_bNEBcrbRDOtno2GaSjUsG8J2Bhigmk2rtAh-24WxUtkIw/viewform?embedded=true" width="100%" height="800"></iframe>
+    </div>
 
-    <section class="tabs">
-        <div class="tab-buttons">
-            <button class="tab-button active" onclick="openTab(event, 'task1')">タスク1</button>
-            <button class="tab-button" onclick="openTab(event, 'task2')">タスク2</button>
-            <button class="tab-button" onclick="openTab(event, 'task3')">タスク3</button>
-            <button class="tab-button" onclick="openTab(event, 'task4')">タスク4</button>
-            <button class="tab-button" onclick="openTab(event, 'task5')">タスク5</button>
-        </div>
+    <div id="task2" class="tab-content">
+        <h3>タスク2: 指定層で最も大きい扇形をクリック</h3>
+        <p>「点線で囲まれた中で最も大きい扇形をクリックしてください。」</p>
+        <p><a href="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=ex-size2" target="_blank">[例題]</a>
+        <a data-base="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=size2" target="_blank">[試験開始]</a></p>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfyg6mAeVMp5bAPYm_TYomYlrWszKZZ1moveX9AyNnyhvWEew/viewform?embedded=true" width="100%" height="800"></iframe>
+    </div>
 
-        <div id="task1" class="tab-content active">
-            <h3>タスク1: 扇形の中心角の割合を選ぶ</h3>
-            <p>「★の扇形の中心角は全体の約何%を占めていると考えますか？」</p>
-            <ul>
-                <li>10%未満</li><li>10%~30%</li><li>30%~50%</li><li>50%以上</li>
-            </ul>
-            <p><a href="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=ex-size1" target="_blank">[例題]</a>
-            <a data-base="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=size1" target="_blank">[試験開始]</a></p>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSce_bNEBcrbRDOtno2GaSjUsG8J2Bhigmk2rtAh-24WxUtkIw/viewform?embedded=true" width="100%" height="800"></iframe>
-        </div>
+    <div id="task3" class="tab-content">
+        <h3>タスク3: 扇形の大きさを比較</h3>
+        <p>「★は同じ層の扇形の中で最も大きいですか？」</p>
+        <ul><li>はい</li><li>いいえ</li></ul>
+        <p><a href="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=ex-size3" target="_blank">[例題]</a>
+        <a data-base="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=size3" target="_blank">[試験開始]</a></p>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScEjyVSETo4jJ73ro-Qmp8JrE3vH2ImQms6zQLLpo3T7n8sJA/viewform?embedded=true" width="100%" height="800"></iframe>
+    </div>
 
-        <div id="task2" class="tab-content">
-            <h3>タスク2: 指定層で最も大きい扇形をクリック</h3>
-            <p>「指定された{depth}層目で最も大きい扇形をクリックしてください。」</p>
-            <p><a href="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=ex-size2" target="_blank">[例題]</a>
-            <a data-base="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=size2" target="_blank">[試験開始]</a></p>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfyg6mAeVMp5bAPYm_TYomYlrWszKZZ1moveX9AyNnyhvWEew/viewform?embedded=true" width="100%" height="800"></iframe>
-        </div>
+    <div id="task4" class="tab-content">
+        <h3>タスク4: 2つの扇形の大きさを比較</h3>
+        <p>「★と⚫︎で、どちらが大きいですか？」</p>
+        <p><strong>注意!!!: </strong><u>★や⚫︎の部分はクリックしても反応しない</u>ため、違う箇所をクリックしてください。</p>
+        <p><a href="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=ex-size4" target="_blank">[例題]</a>
+        <a data-base="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=size4" target="_blank">[試験開始]</a></p>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeNbBWHiBN_bgbRUmmUYd2545QOnO2V69lhBDcTgnYEqBF1JQ/viewform?embedded=true" width="100%" height="800"></iframe>
+    </div>
 
-        <div id="task3" class="tab-content">
-            <h3>タスク3: 扇形の大きさを比較</h3>
-            <p>「★は同じ層の扇形の中で何番目に大きいですか？」</p>
-            <ul><li>1番目</li><li>それ以外</li></ul>
-            <p><a href="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=ex-size3" target="_blank">[例題]</a>
-            <a data-base="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=size3" target="_blank">[試験開始]</a></p>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScEjyVSETo4jJ73ro-Qmp8JrE3vH2ImQms6zQLLpo3T7n8sJA/viewform?embedded=true" width="100%" height="800"></iframe>
-        </div>
+    <div id="task5" class="tab-content">
+        <h3>タスク5: 共通祖先を探す</h3>
+        <p>「★と⚫︎の共通祖先は存在しますか？最も近い層を選んでください。」</p>
+        <p><a href="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=ex-hierarchical" target="_blank">[例題]</a>
+        <a data-base="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=hierarchical" target="_blank">[試験開始]</a></p>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeUojKN-bLBDg9wR9PLcQJ8E6DEdhZnOyYtU5xJTOYIYhaKyw/viewform?embedded=true" width="100%" height="800"></iframe>
+    </div>
+      <button id="toFeedback">全テスト完了</button>
+    </div>
 
-        <div id="task4" class="tab-content">
-            <h3>タスク4: 2つの扇形の大きさを比較</h3>
-            <p>「★と⚫︎で、どちらが大きいですか？」</p>
-            <p><strong>注意!!!: </strong>★や⚫︎の部分はクリックしても反応しないため、違う箇所をクリックしてください。</p>
-            <p><a href="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=ex-size4" target="_blank">[例題]</a>
-            <a data-base="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=size4" target="_blank">[試験開始]</a></p>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeNbBWHiBN_bgbRUmmUYd2545QOnO2V69lhBDcTgnYEqBF1JQ/viewform?embedded=true" width="100%" height="800"></iframe>
-        </div>
+    <div id="panel4" class="panel">
+      <h2>④ 感想</h2>
+      <p>以下のフォームに感想を記入してください。</p>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScn1TcnM0otjlhNUOFrOIdlQaPJ7XYXWQbDLCoeWRnyoSRXbg/viewform?embedded=true" width="640" height="1211" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+    </div>
+  </div>
 
-        <div id="task5" class="tab-content">
-            <h3>タスク5: 共通祖先を探す</h3>
-            <p>「★と⚫︎の共通祖先は存在しますか？最も近い層を選んでください。」</p>
-            <p><a href="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=ex-hierarchical" target="_blank">[例題]</a>
-            <a data-base="https://70ea-2403-4440-40-61-e0b6-e568-b4d0-4b45.ngrok-free.app/ToL?task=hierarchical" target="_blank">[試験開始]</a></p>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeUojKN-bLBDg9wR9PLcQJ8E6DEdhZnOyYtU5xJTOYIYhaKyw/viewform?embedded=true" width="100%" height="800"></iframe>
-        </div>
-    </section>
-    <section>
-        <h2>③ 感想</h2>
-        <p>以下のフォームにご感想を入力してください。</p>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScn1TcnM0otjlhNUOFrOIdlQaPJ7XYXWQbDLCoeWRnyoSRXbg/viewform?embedded=true" width="640" height="1211" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+  <script>
+    //let allowTabScroll = false;
+    let firstTabOpened = false;  // 最初のタブ表示フラグ
+    function activateStep(stepNum) {
+      $('.panel').removeClass('active');
+      $('#panel' + stepNum).addClass('active');
+  
+      $('.step').removeClass('current');
+      $('#nav' + stepNum).addClass('current');
+    }
+  
+    $('#confirmName').on('click', function () {
+      const name = $('#userName').val().trim();
+      if (name === '') {
+        alert('名前を入力してください');
+        return;
+      }
+      alert(`名前「${name}」が設定されました。`);
+      activateStep(2);
+    });
+  
+    $('#toTest').on('click', function () {
+      activateStep(3);
+    });
+  
+    $('#toFeedback').on('click', function () {
+      activateStep(4);
+    });
+  
+    // ←追加部分
+    $('.step').on('click', function () {
+      const stepId = $(this).attr('id'); // 例: nav2
+      const stepNum = stepId.replace('nav', ''); // → "2"
+      activateStep(stepNum);
+    });
 
-    </section>
-
-    <section>
-        <h2>④ CSVファイルの提出</h2>
-        <p>全タスク終了後、以下にCSVファイルをアップロードしてください。<br>
-        <a href="https://science-tokyo.box.com/s/d5vs54kv91gfbudfb7lcmv9kkz9wuv71" target="_blank">Box 提出フォーム</a></p>
-        <p><strong>お疲れ様でした！ご協力ありがとうございました。</strong></p>
-    </section>
-
-    <script>
-        function applyName() {
-            const name = document.getElementById("userName").value.trim();
-            if (!name) {
-                alert("名前を入力してください。");
-                return;
-            }
-            document.querySelectorAll("a[data-base]").forEach(link => {
-                const base = link.getAttribute("data-base");
-                link.href = `${base}&name=${encodeURIComponent(name)}`;
-            });
-            alert(`名前「${name}」が設定されました。`);
+    function applyName() {
+        const name = document.getElementById("userName").value.trim();
+        if (!name) {
+            alert("名前を入力してください。");
+            return;
         }
-        
-        function openTab(evt, tabId) {
-            // すべてのタブを非表示
-            document.querySelectorAll(".tab-content").forEach(tab => {
-                tab.classList.remove("active");
-            });
-            // すべてのボタンから active を外す
-            document.querySelectorAll(".tab-button").forEach(btn => {
-                btn.classList.remove("active");
-            });
-            // 対象タブを表示し、ボタンをアクティブに
-            document.getElementById(tabId).classList.add("active");
-            evt.currentTarget.classList.add("active");
+        document.querySelectorAll("a[data-base]").forEach(link => {
+            const base = link.getAttribute("data-base");
+            link.href = `${base}&name=${encodeURIComponent(name)}`;
+        });
+        // タブを表示可能に
+        //document.getElementById("taskTabs").style.display = "block";
+    
+        /*// スクロール（概要セクションへ）
+        document.getElementById("test-overview").scrollIntoView({ behavior: 'smooth' });
+        alert(`名前「${name}」が設定されました。`);*/
+    }
+
+    function openTab(evt, tabId) {
+        document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
+        document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active"));
+        document.getElementById(tabId).classList.add("active");
+        evt.currentTarget.classList.add("active");
+
+        if (!firstTabOpened) {
+            document.querySelector(".tab-buttons").scrollIntoView({ behavior: "smooth" });
+            firstTabOpened = true;
         }
-        </script>        
+    }
+  </script>
+  
 </body>
 </html>
